@@ -1,0 +1,130 @@
+/**
+ * Rumyra theme for reveal.js.
+ *
+ * Copyright (C) 2016 Ruth John
+ */
+
+/* Classes you can use
+* .alternate on section makes background dark and font light
+* .plain on img = no border
+* .back-img puts outline on text so it shows
+* .
+* .
+*/
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+
+// Base settings for all themes that can optionally be
+// overridden by the super-theme
+
+$primaryColour:#5d3473;
+$secondaryColour:#853964;
+$white:lighten($primaryColour, 70%);
+$black:darken($primaryColour, 20%);
+
+
+// Background of the presentation
+$backgroundColor: $white;
+
+// Primary/body text
+$mainFont: 'Lato', sans-serif;
+$mainFontSize: 36px;
+$mainColor: #eee;
+
+// Vertical spacing between blocks of text
+$blockMargin: 20px;
+
+// Headings
+$headingMargin: 0 0 $blockMargin 0;
+$headingFont: 'League Gothic', Impact, sans-serif;
+$headingColor: #eee;
+$headingLineHeight: 1.2;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingTextShadow: none;
+$headingFontWeight: normal;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: 3.77em;
+$heading2Size: 2.11em;
+$heading3Size: 1.55em;
+$heading4Size: 1.00em;
+
+// Links and actions
+$linkColor: $secondaryColour;
+$linkColorHover: lighten( $linkColor, 20% );
+
+// Text selection
+$selectionBackgroundColor: #FF5E99;
+$selectionColor: #fff;
+
+// Generates the presentation background, can be overridden
+// to return a background image or gradient
+@mixin bodyBackground() {
+  background: $backgroundColor;
+}
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-style: normal;
+  src: url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+}
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Montserrat', sans-serif;
+$mainColor: $black;
+$headingFont: 'Montserrat', sans-serif;
+$headingColor: $primaryColour;
+$headingLetterSpacing: -0.08em;
+$headingTextShadow: none;
+$backgroundColor: $white;
+$linkColor: $secondaryColour;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: #134674;
+
+// Fix links so they are not cut off
+.reveal a {
+	line-height: 1.3em;
+}
+
+
+// Background generator
+@mixin bodyBackground() {
+	background: $backgroundColor;
+}
+
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+.reveal .slides>section .alternate {
+  padding: 20px;
+  background-color: $primaryColour;
+  h1, h2, h3, h4, h5, h6, p {color: $white;}
+}
+
+.reveal .slides>section .back-img {
+  h1, h2, h3, h4, h5, h6, p, a {
+    color: white;
+    text-shadow: 0px 0px 5px black;
+  }
+}
+.reveal .slides pre code {
+  padding: $blockMargin;
+  font-size: 24px;
+  line-height: 120%;
+}
